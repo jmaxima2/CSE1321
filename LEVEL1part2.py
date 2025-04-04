@@ -114,13 +114,13 @@ JUMP = 0
 SPEED = 7
 keys = pygame.key.get_pressed()
 
-def reset_screen():
+def reset_screen(x,y):
+    global player_x, player_y
     # sets variables used to keep track of some for loop iterations
     num1 = 0
     num2 = 0
     # loads in all platforms, flowers, boppi, and the background
     screen.blit(level1Background, (0, 0))
-    level1Background.blit(boppi, (player_x, player_y))
     level1Background.blit(plat1, (0, 150))
     level1Background.blit(plat2, (200, 250))
     level1Background.blit(plat3, (60, 350))
@@ -143,11 +143,12 @@ def reset_screen():
     for flower in flower_list:
         level1Background.blit(flower, flower_location[num1])
         num1 = num1 + 1
+    level1Background.blit(boppi, (player_x, player_y))
     pygame.display.flip()
 # checks to see if player is on a platform or not
 def check_on_plat(x,y):
     global velocity_y, on_plat
-    if plat1Rect.collidepoint(player_x, player_y + 41) == True or plat2Rect.collidepoint(player_x, player_y + 41) == True or plat3Rect.collidepoint(player_x, player_y + 41) == True or plat4Rect.collidepoint(player_x, player_y + 41) == True or plat5Rect.collidepoint(player_x, player_y + 41) == True or plat6Rect.collidepoint(player_x, player_y + 41) == True or plat7Rect.collidepoint(player_x, player_y + 41) == True or plat8Rect.collidepoint(player_x, player_y + 41) == True or plat9Rect.collidepoint(player_x, player_y + 41) == True or plat10Rect.collidepoint(player_x, player_y + 41) == True or plat11Rect.collidepoint(player_x, player_y + 41) == True or plat12Rect.collidepoint(player_x, player_y + 41) == True or plat13Rect.collidepoint(player_x, player_y + 41) == True or plat14Rect.collidepoint(player_x, player_y + 41) == True or plat15Rect.collidepoint(player_x, player_y + 41) == True:
+    if plat1Rect.collidepoint(player_x, player_y + 36) == True or plat2Rect.collidepoint(player_x, player_y + 36) == True or plat3Rect.collidepoint(player_x, player_y + 36) == True or plat4Rect.collidepoint(player_x, player_y + 36) == True or plat5Rect.collidepoint(player_x, player_y + 36) == True or plat6Rect.collidepoint(player_x, player_y + 36) == True or plat7Rect.collidepoint(player_x, player_y + 36) == True or plat8Rect.collidepoint(player_x, player_y + 36) == True or plat9Rect.collidepoint(player_x, player_y + 36) == True or plat10Rect.collidepoint(player_x, player_y + 36) == True or plat11Rect.collidepoint(player_x, player_y + 36) == True or plat12Rect.collidepoint(player_x, player_y + 36) == True or plat13Rect.collidepoint(player_x, player_y + 36) == True or plat14Rect.collidepoint(player_x, player_y + 36) == True or plat15Rect.collidepoint(player_x, player_y + 36) == True:
         on_plat = True
     else:
         on_plat = False
@@ -171,7 +172,7 @@ def handle_movement(keys):
 while running:
     GRAVITY = 15
     JUMP = 0
-    reset_screen()
+    reset_screen(player_x, player_y)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -179,7 +180,6 @@ while running:
     # Handle movement
     keys = pygame.key.get_pressed()
     handle_movement(keys)
-
     if check_on_plat(player_x,player_y) == True:
         GRAVITY = 0
         if JUMP == 0:
@@ -187,16 +187,14 @@ while running:
             velocity_y = GRAVITY
             player_y += velocity_y
             player_x += velocity_x
-            level1Background.blit(boppi, (player_x, player_y))
-            pygame.display.flip()
+            reset_screen(player_x, player_y)
         elif JUMP == 1:
-            for x in range(15):
-                GRAVITY = -15 + 1
+            for x in range(80):
+                GRAVITY = -80 + 1
             velocity_y = GRAVITY
             player_y += velocity_y
             player_x += velocity_x
-            level1Background.blit(boppi, (player_x, player_y))
-            pygame.display.flip()
+            reset_screen(player_x, player_y)
     elif check_on_plat(player_x,player_y) == False:
         # Apply gravity
         if JUMP == 0:
@@ -204,17 +202,15 @@ while running:
             velocity_y = GRAVITY
             player_y += velocity_y
             player_x += velocity_x
-            level1Background.blit(boppi, (player_x, player_y))
-            pygame.display.flip()
+            reset_screen(player_x,player_y)
         elif JUMP == 1:
-            for x in range (100):
-                GRAVITY = -100 + 1
+            for x in range (80):
+                GRAVITY = -80 + 1
             velocity_y = GRAVITY
             player_y += velocity_y
             player_x += velocity_x
-            level1Background.blit(boppi, (player_x, player_y))
-            pygame.display.flip()
-    clock.tick(60)  # 60 FPS
+            reset_screen(player_x,player_y)
+    clock.tick(30)  # 60 FPS
 
 
 
