@@ -4,7 +4,7 @@ pygame.init()
 
 #creates screen and loads in images
 screen = pygame.display.set_mode((1280, 720))
-boppi = pygame.image.load("BoppiFront.png").convert_alpha()
+boppi = pygame.image.load("BoppiFront2.png").convert_alpha()
 boppiRect = pygame.Rect(0,115,44,40)
 arrow = pygame.image.load("Arrow for Game.png").convert_alpha()
 arrowRect = pygame.Rect(1222.5,315,30,15)
@@ -17,49 +17,49 @@ level1Flag = False
 
 #creates all platforms and flowers
 plat1 = pygame.Surface((100, 10))
-plat1Rect = pygame.Rect(0,150,100,10)
+plat1Rect = pygame.Rect(-2,150,102,10)
 plat1.fill((0, 51, 0))
 plat2 = pygame.Surface((100, 10))
-plat2Rect = pygame.Rect(200,250,100,10)
+plat2Rect = pygame.Rect(198,250,102,10)
 plat2.fill((0, 51, 0))
 plat3 = pygame.Surface((100, 10))
-plat3Rect = pygame.Rect(60,350,100,10)
+plat3Rect = pygame.Rect(58,350,102,10)
 plat3.fill((0, 51, 0))
 plat4 = pygame.Surface((100, 10))
-plat4Rect = pygame.Rect(200,550,100,10)
+plat4Rect = pygame.Rect(198,550,102,10)
 plat4.fill((0, 51, 0))
 plat5 = pygame.Surface((100, 10))
-plat5Rect = pygame.Rect(100,70,100,10)
+plat5Rect = pygame.Rect(98,70,102,10)
 plat5.fill((0, 51, 0))
 plat6 = pygame.Surface((100, 10))
-plat6Rect = pygame.Rect(350,150,100,10)
+plat6Rect = pygame.Rect(348,150,102,10)
 plat6.fill((0, 51, 0))
 plat7 = pygame.Surface((100, 10))
-plat7Rect = pygame.Rect(550,200,100,10)
+plat7Rect = pygame.Rect(548,200,102,10)
 plat7.fill((0, 51, 0))
 plat8 = pygame.Surface((100, 10))
-plat8Rect = pygame.Rect(850,175,100,10)
+plat8Rect = pygame.Rect(848,175,102,10)
 plat8.fill((0, 51, 0))
 plat9 = pygame.Surface((100, 10))
-plat9Rect = pygame.Rect(1100,70,100,10)
+plat9Rect = pygame.Rect(1098,70,102,10)
 plat9.fill((0, 51, 0))
 plat10 = pygame.Surface((100, 10))
-plat10Rect = pygame.Rect(700,300,100,10)
+plat10Rect = pygame.Rect(698,300,102,10)
 plat10.fill((0, 51, 0))
 plat11 = pygame.Surface((100, 10))
-plat11Rect = pygame.Rect(575,400,100,10)
+plat11Rect = pygame.Rect(573,400,102,10)
 plat11.fill((0, 51, 0))
 plat12 = pygame.Surface((100, 10))
-plat12Rect = pygame.Rect(650,600,100,10)
+plat12Rect = pygame.Rect(648,600,102,10)
 plat12.fill((0, 51, 0))
 plat13 = pygame.Surface((100, 10))
-plat13Rect = pygame.Rect(1000,600,100,10)
+plat13Rect = pygame.Rect(998,600,102,10)
 plat13.fill((0, 51, 0))
 plat14 = pygame.Surface((100, 10))
-plat14Rect = pygame.Rect(1180,350,100,10)
+plat14Rect = pygame.Rect(1178,350,102,10)
 plat14.fill((0, 51, 0))
 plat15 = pygame.Surface((40,10))
-plat15Rect = pygame.Rect(40,650,40,10)
+plat15Rect = pygame.Rect(38,650,42,10)
 flower1 = pygame.Surface((10,10))
 flower1Rect = pygame.Rect(105,325,10,10)
 flower1.fill((255,102,178))
@@ -105,13 +105,13 @@ retryText = font.render("Press S to Retry", False, (0,0,0))
 cannotContinueText = font.render("Cannot continue. Collect all of the flowers.", False, (0,0,0))
 
 #sets some constants and variables that will be used later
-player_x, player_y = 0, 115
+player_x, player_y = 0, 82
 velocity_x, velocity_y = 0, 0
 on_ground = False
 on_plat = True
 GRAVITY = 15
 JUMP = 0
-SPEED = 7
+SPEED = 15
 keys = pygame.key.get_pressed()
 
 def reset_screen(x,y):
@@ -148,7 +148,7 @@ def reset_screen(x,y):
 # checks to see if player is on a platform or not
 def check_on_plat(x,y):
     global velocity_y, on_plat
-    if plat1Rect.collidepoint(player_x, player_y + 36) == True or plat2Rect.collidepoint(player_x, player_y + 36) == True or plat3Rect.collidepoint(player_x, player_y + 36) == True or plat4Rect.collidepoint(player_x, player_y + 36) == True or plat5Rect.collidepoint(player_x, player_y + 36) == True or plat6Rect.collidepoint(player_x, player_y + 36) == True or plat7Rect.collidepoint(player_x, player_y + 36) == True or plat8Rect.collidepoint(player_x, player_y + 36) == True or plat9Rect.collidepoint(player_x, player_y + 36) == True or plat10Rect.collidepoint(player_x, player_y + 36) == True or plat11Rect.collidepoint(player_x, player_y + 36) == True or plat12Rect.collidepoint(player_x, player_y + 36) == True or plat13Rect.collidepoint(player_x, player_y + 36) == True or plat14Rect.collidepoint(player_x, player_y + 36) == True or plat15Rect.collidepoint(player_x, player_y + 36) == True:
+    if plat1Rect.collidepoint(player_x, player_y + 70) == True or plat2Rect.collidepoint(player_x, player_y + 70) == True or plat3Rect.collidepoint(player_x, player_y + 70) == True or plat4Rect.collidepoint(player_x, player_y + 70) == True or plat5Rect.collidepoint(player_x, player_y + 70) == True or plat6Rect.collidepoint(player_x, player_y + 70) == True or plat7Rect.collidepoint(player_x, player_y + 70) == True or plat8Rect.collidepoint(player_x, player_y + 70) == True or plat9Rect.collidepoint(player_x, player_y + 70) == True or plat10Rect.collidepoint(player_x, player_y + 70) == True or plat11Rect.collidepoint(player_x, player_y + 70) == True or plat12Rect.collidepoint(player_x, player_y + 70) == True or plat13Rect.collidepoint(player_x, player_y + 70) == True or plat14Rect.collidepoint(player_x, player_y + 70) == True or plat15Rect.collidepoint(player_x, player_y + 70) == True:
         on_plat = True
     else:
         on_plat = False
@@ -191,6 +191,7 @@ while running:
         elif JUMP == 1:
             for x in range(80):
                 GRAVITY = -80 + 1
+
             velocity_y = GRAVITY
             player_y += velocity_y
             player_x += velocity_x
